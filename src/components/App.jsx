@@ -3,6 +3,8 @@ import { GlobalStyle } from './GlobalStyle';
 import { Section } from './Section/Section';
 import { FeedbackButtons } from './Feedback/Feedback';
 import { StatisticsInfo } from './Statistics/Statistics';
+import { Notification } from './Notification/Notification';
+
 export class App extends Component {
   state = {
     good: 0,
@@ -34,18 +36,22 @@ export class App extends Component {
         <GlobalStyle />
         <Section title="Please live feedback">
           <FeedbackButtons
-            values={values}
-            onAddFeedback={this.handleIncrement}
+            options={values}
+            onLeaveFeedback={this.handleIncrement}
           />
         </Section>
         <Section title="Statistics">
-          <StatisticsInfo
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() !== 0 ? (
+            <StatisticsInfo
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </>
     );

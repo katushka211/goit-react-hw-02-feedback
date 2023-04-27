@@ -1,13 +1,13 @@
-export const FeedbackButtons = ({ values, onAddFeedback }) => {
-  return values.map(value => (
+export const FeedbackButtons = ({ options, onLeaveFeedback }) => {
+  return options.map(option => (
     <button
       onClick={() => {
-        onAddFeedback(value);
+        onLeaveFeedback(option);
       }}
       type="button"
-      key={value}
+      key={option}
     >
-      {value}
+      {option}
     </button>
   ));
 };
