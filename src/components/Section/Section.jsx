@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import { SectionFeedb } from './Section.styled';
 export const Section = ({ title, children }) => {
   return (
-    <section>
+    <SectionFeedb>
       <h2>{title}</h2>
       {children}
-    </section>
+    </SectionFeedb>
   );
 };
 
