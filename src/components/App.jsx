@@ -31,6 +31,7 @@ export class App extends Component {
   render() {
     const { good, neutral, bad } = this.state;
     const values = Object.keys(this.state);
+    const totalFeedback = this.countTotalFeedback();
     return (
       <>
         <GlobalStyle />
@@ -41,12 +42,12 @@ export class App extends Component {
           />
         </Section>
         <Section title="Statistics">
-          {this.countTotalFeedback() !== 0 ? (
+          {totalFeedback !== 0 ? (
             <StatisticsInfo
               good={good}
               neutral={neutral}
               bad={bad}
-              total={this.countTotalFeedback()}
+              total={totalFeedback}
               positivePercentage={this.countPositiveFeedbackPercentage()}
             />
           ) : (
